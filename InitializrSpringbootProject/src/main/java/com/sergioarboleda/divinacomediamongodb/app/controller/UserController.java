@@ -60,7 +60,7 @@ public class UserController {
     }
     
     @DeleteMapping("/{id}")
-    //@ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") Integer id){
         return service.delete(id);
     }

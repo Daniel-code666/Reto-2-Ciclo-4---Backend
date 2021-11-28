@@ -37,34 +37,6 @@ public class HairProductService {
         Optional<HairProduct> prodExist = repository.getById(prod.getReference());
         
         if (prodExist.isPresent()){
-            if(prod.getBrand() != null){
-                prodExist.get().setBrand(prod.getBrand());
-            }
-            
-            if(prod.getCategory()!= null){
-                prodExist.get().setCategory(prod.getCategory());
-            }
-            
-            if(prod.getName() != null){
-                prodExist.get().setName(prod.getName());
-            }
-            
-            if(prod.getDescription()!= null){
-                prodExist.get().setDescription(prod.getDescription());
-            }
-            
-            if(prod.getPrice() != null){
-                prodExist.get().setPrice(prod.getPrice());
-            }
-            
-            if(prod.getQuantity()!= null){
-                prodExist.get().setQuantity(prod.getQuantity());
-            }
-            
-            if(prod.getPhotography()!= null){
-                prodExist.get().setPhotography(prod.getPhotography());
-            }
-            
             return repository.save(prod);
         }else{
             return prod;

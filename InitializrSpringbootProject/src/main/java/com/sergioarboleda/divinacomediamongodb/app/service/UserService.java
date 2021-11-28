@@ -73,13 +73,13 @@ public class UserService {
                 userExist.get().setName(user.getName());
             }
             
-            if(user.getBirthtDay()!= null){
+            /*if(user.getBirthtDay()!= null){
                 userExist.get().setBirthtDay(user.getBirthtDay());
             }
             
             if(user.getMonthBirthtDay()!= null){
                 userExist.get().setMonthBirthtDay(user.getMonthBirthtDay());
-            }
+            }*/
             
             if(user.getAddress()!= null){
                 userExist.get().setAddress(user.getAddress());
@@ -115,11 +115,12 @@ public class UserService {
 //        if (repository.getUserById(id).isPresent()){
 //            repository.delete(id);
 //        }
-        Boolean aBool = getUserById(id).map(user -> {
-            repository.delete(user.getId());
+        Optional<User> existUser = repository.getUserById(id);
+
+        if(existUser.isPresent()){
+            repository.delete(id);
             return true;
-        }).orElse(false);
-        
-        return aBool;
+        }
+        return false;
     }
 }
